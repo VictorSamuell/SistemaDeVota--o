@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
     EmailInput.addEventListener('input', function (e) {
         const Email = e.target.value.trim();
 
-        if (Email.includes('@')) {
+        if (Email.includes('@gmail.com')) {
             voto.Email = Email;
             checkForm.Email = true;
         } else {

@@ -44,3 +44,6 @@ VALUES
 ('teste@gmail.com'),
 ('victor@gmail.com');
 
+
+INSERT INTO estudantes (nome_estudante, email, senha) VALUES
+('admin', 'admin@gmail.com', 'admin');

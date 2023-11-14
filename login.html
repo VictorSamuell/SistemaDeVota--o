@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema de Votação do Grêmio</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="icon" href="./images/favicon.png">
+  </head>
+
+  <body>
+    <div class="bodytest">
+
+      <div class="container">
+
+        <h1 class="form-title">Login</h1>
+
+        <form action="login.php" method="post" class="formulario">
+
+          <div class="main-user-info">
+
+              
+              <div class="user-input-box">
+                  
+                  <label for="Email">Email</label>
+                  <input
+                  type="text"
+                  id="Email"
+                  name="Email"
+                  placeholder="Email"
+                  />
+                  
+                </div>
+                
+                <div class="user-input-box">
+                
+                  <label for="NumeroCandidato"> Senha </label>
+                
+                  <input
+                    type="password"
+                    id="Senha"
+                    name="Senha"
+                    placeholder="Senha"
+                    required
+                  />
+                
+                </div>
+
+          </div>
+
+        </form>
+
+        <div class="results">
+        
+          <h2><a href="index.html" type="submit" value="Entrar">Login</a></h2>
+          
+          <ul id="resultList">
+            <!-- Os resultados serão exibidos aqui via JavaScript -->
+          </ul>
+        </div>
+      </div>
+      
+    </div>
+    <script type="text/javascript" src="./scripts/login.js"></script>
+  </body>
+</html>
