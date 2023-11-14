@@ -23,6 +23,9 @@ body{
       align-items: center;
       background-color: rgba(20, 19, 19, 0.884);
       background-size: cover;
+      flex-direction: column;
+      
+      
     
       
     
@@ -31,22 +34,47 @@ body{
   .container{
       width: 550px;
       max-width: 650px;
-      
-      background-color: rgba(150, 146, 146, 0.5);
+      background-color: rgba(90, 88, 88, 0.5);
       padding: 28px;
       margin: 0 28px;
       border-radius: 8px;
       flex-direction: column;
+      padding-bottom: 20px;
+      position:absolute;
+      margin-bottom: 100px;
       
   }
+
+  .container2{
+    width: 400px;
+    max-width: 550px;
+    background-color: rgb(89, 90, 90);
+    margin-top: 490px;
+    width: 100%;
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    padding-left: 30px;
+    padding: 15px;
+    
+  
+  
+    
+}
+
   .form-title{
       font-size: 26px;
       font-weight: 600;
       text-align: center;
       padding-bottom: 6px;
+      padding-top: 6px;
       color: azure;
-      text-shadow: 2px 2px 2px rgb(0, 0, 0);
+      border-radius: 10px;
       border-bottom: solid 1px white;
+      border-top: solid 1px white;
+      border-left: solid 1px white;
+      border-right: solid 1px white;
   }
   
   
@@ -80,7 +108,7 @@ body{
   .user-input-box input{
       height: 45px;
       width: 95%;
-      border-radius: 5px;
+      border-radius: 3px;
       outline: none;
       border: 1px solid grey;
       padding: 0 10px;
@@ -116,4 +144,20 @@ body{
 
     color: aliceblue;
     font-size: 20px;
+  }
+  .results{
+
+    padding: 10px;
+    background-color: #242121;
+    justify-content: center;
+    display: flex;
+    transition: all .3s ease-in-out;
+    border-radius: 3px;
+
+  }
+
+  .results:hover{
+
+    border: 1px solid aliceblue
+
   }
