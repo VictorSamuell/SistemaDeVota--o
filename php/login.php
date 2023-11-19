@@ -4,7 +4,6 @@ header('Access-Control-Allow-Methods: POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
 header('Content-type: application/json');
 
-
 session_start();
 
 $hostname = "localhost";
@@ -18,9 +17,8 @@ if (!$conn) {
     die("Erro de conexão com o banco de dados: " . mysqli_connect_error());
 }
 
-// Verifica se o método da requisição é POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Recebe os dados em JSON e decodifica
+    
 
     $json = file_get_contents('php://input');
     $data = json_decode($json, true);
@@ -30,35 +28,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
-    $sql = "SELECT * FROM ";
-
-
-
-
-    // Verifique se o número do candidato e o email são válidos
-    
-    if(isset($data['NumeroCandidato'])) $numero_candidato = $data['NumeroCandidato'];
-    else {
-        $numero_candidato = 1;
-    }
-
-
-    if(isset($data['Email'])){
+   
+    if (isset($data['Email']) && isset($data['Senha'])) {
         $Email = $data['Email'];
-    }
+        $Senha = $data['Senha'];
 
-    
+        
+        $query = "SELECT * FROM estudantes WHERE email = '$Email' AND senha = '$Senha'";
+        $result = mysqli_query($conn, $query);
 
-    // Consulta o banco de dados para atualizar os votos do candidato
-    $query = "UPDATE candidatos SET votos = votos + 1 WHERE numero_candidato = $numero_candidato";
+        if (!$result) {
+            echo json_encode(array("error" => "Erro ao consultar o usuário: " . mysqli_error($conn)));
+            exit();
+        }
 
-    if (mysqli_query($conn, $query)) {
-        echo json_encode(array("success" => true));
+        if (mysqli_num_rows($result) > 0) {
+            
+            $_SESSION['email'] = $Email;
+            $_SESSION['senha'] = $Senha;
+
+            echo json_encode(array("success" => true));
+        } else {
+            echo json_encode(array("error" => "Credenciais inválidas."));
+        }
     } else {
-        echo json_encode(array("error" => "Erro ao registrar o voto: " . mysqli_error($conn)));
+        echo json_encode(array("error" => "Campos obrigatórios não preenchidos."));
     }
 } else {
     echo json_encode(array("error" => "Método de requisição inválido."));
 }
 
 mysqli_close($conn);
+?>
